@@ -1,0 +1,54 @@
+ \documentclass[12pt,a4paper]{article}
+ \usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tkz-pos}
+ \usepackage{polyglossia}
+\setmainlanguage[numerals=maghrib]{arabic}
+\setotherlanguage{english}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1]{Amiri}
+%
+
+ \def\Nplot{\left(C_f\right)}
+\def\Nline{\left(\Delta\right)}
+ 
+%
+\begin{document}
+ 
+ \section{مثال1}
+ 
+\begin{tikzpicture}
+\tkzTabInit[  espcl=2  ] 
+{$x$ / 1 ,
+$f(x)-y$/1,
+ الوضع النسبي
+ /2 }%
+{$-\infty$ , $1$, $+\infty$ }%
+\tkzTabLine{,+,z,-,}
+ \tkzTabPos{ ,+,z/$\left(1;f(1)\right)$ ,-,} 
+\end{tikzpicture}
+
+   \begin{tikzpicture}
+\tkzTabInit[  espcl=2  ]%   ,help]
+{$x$ / 1 ,
+$f(x)-y$/1,
+ الوضع النسبي
+ /2 }%
+{$-\infty$ , $-3$ , $3$, $+\infty$ }%
+\tkzTabLine{t,+,z,-,z,+,t }
+ \tkzTabPos{t,+,z/$A(-3;f(-3))$ ,-,z/$A(3;f(3))$,+,t}%
+\end{tikzpicture}
+ 
+ \begin{tikzpicture}
+\tkzTabInit[  espcl=2  ] 
+{$x$ / 1 ,
+$f(x)-y$/1,
+ الوضع النسبي
+ /2 }%
+{$-\infty$ , $-3$ , $3$, $5$ ,$+\infty$ } 
+\tkzTabLine{t,+,d,h,d,+,z,-, }
+\tkzTabPos{t,+,d,h,d,-, z/$A\left(5;f(5)\right)$,-,} 
+\end{tikzpicture}
+ \end{document}
+ 
