@@ -2,13 +2,17 @@
  \usepackage[margin=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{amssymb}
+\usepackage{amssymb,mathpazo}
 \usepackage{tkz-pos}
  \usepackage{polyglossia}
 \setmainlanguage[numerals=maghrib]{arabic}
 \setotherlanguage{english}
 \newfontfamily\arabicfont[Script=Arabic,Scale=1]{Amiri}
 %
+
+\newfontfamily\arabicfontsf[Script=Arabic,Scale=1]{Amiri}
+
+\newfontfamily\arabicfonttt[Script=Arabic,Scale=1]{Amiri}
 
  \def\Nplot{\left(C_f\right)}
 \def\Nline{\left(\Delta\right)}
@@ -17,9 +21,23 @@
 \begin{document}
  
  \section{مثال1}
+\begin{tikzpicture}[node style/.style={fill opacity=0,text opacity=1}] 
+\tkzTabColors[backgroundcolor=yellow]
+\tkzTabInit[  espcl=2 ] 
+{$x$ / 1 ,
+$f(x)-y$/1,
+ الوضع النسبي
+ /2 
+ }%
+{$-\infty$ , $-1$,$1-\sqrt{3}$,$1$, $+\infty$ }%
+\tkzTabLine{,+,d,-,z,+,d,-,}
+ \tkzTabPos{ ,+,d,-,z/$\left(1-\sqrt{3};f(1-\sqrt{3})\right)$ ,+,d,-,} 
+%\tkzTabVar{-/,+/}
+\end{tikzpicture}
+
  
 \begin{tikzpicture}
-\tkzTabInit[  espcl=2  ] 
+\tkzTabInit[  espcl=2 ,color,colorT=cyan!10,colorV=yellow,colorC=gray!11,colorL=red!10 ] 
 {$x$ / 1 ,
 $f(x)-y$/1,
  الوضع النسبي
@@ -30,14 +48,14 @@ $f(x)-y$/1,
 \end{tikzpicture}
 
    \begin{tikzpicture}
-\tkzTabInit[  espcl=2  ]%   ,help]
+\tkzTabInit[  espcl=2.2     ]% ,help]
 {$x$ / 1 ,
 $f(x)-y$/1,
  الوضع النسبي
  /2 }%
 {$-\infty$ , $-3$ , $3$, $+\infty$ }%
 \tkzTabLine{t,+,z,-,z,+,t }
- \tkzTabPos{t,+,z/$A(-3;f(-3))$ ,-,z/$A(3;f(3))$,+,t}%
+ \tkzTabPos{t,+,z/$B(-3;f(-3))$ ,-,z/$A(3;f(3))$,+,t}%
 \end{tikzpicture}
  
  \begin{tikzpicture}
