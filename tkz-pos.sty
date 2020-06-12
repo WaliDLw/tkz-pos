@@ -1,18 +1,20 @@
-%<----------------------------------------------------------------------> 
+%<------------------------------------------> 
 \RequirePackage{tkz-tab} 
+\usetikzlibrary{shapes.geometric}
  \def\Nplot{\left(C_f\right)}
 \def\Nline{\left(\Delta\right)}
 \def\plot{f}
 \def\line{y}
-%<--------------------------------------------------------------------------->
+%<------------------------------------------>
   \newcommand*{\tkzTabPos}[2][]{%
-\setkeys[TAB]{TL}{#1}%   
+ \makeatletter
+ \setkeys[TAB]{TL}{#1}%   
  \setcounter{tkz@cnt@lg}{\thetkz@cnt@line}%
  \stepcounter{tkz@cnt@line}%
  \setcounter{tkz@cnt@lgnext}{\thetkz@cnt@line}%
  \setcounter{tkz@cnt@cl}{1}%
  \setcounter{tkz@cnt@pair}{1}%
- \setcounter{tkz@cnt@impair}{1}
+ \setcounter{tkz@cnt@impair}{1}%
  %help
  \ifTAB@TL@help
  %
@@ -50,19 +52,27 @@
 %  
 \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{%
 %%%%%%
-\draw[line width =\cmdTAB@tbs@lw](N\thetkz@cnt@impair\thetkz@cnt@lg)to[bend right] 
-([xshift=-.65cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext)
- (N\thetkz@cnt@impair\thetkz@cnt@lg)to[bend left] 
-([xshift=+.65cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext);   
-              \node[rotate=+0,font=\scriptsize, align=center,text width=1cm,] at   ([yshift=-.1cm]Z\thetkz@cnt@impair\thetkz@cnt@lg  ){ 
-  $\Nplot$   \\ 
- $\Nline$
-    يقطع             
-                %
-               \\  
-               { النقطة في \\
-\tiny{\ifTAB@VA@help\else\tl\fi}}  
-               }; 
+\draw[line width =\cmdTAB@tbs@lw ]
+([xshift=-01cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext)..
+controls+(90:0.5)and+(235:1)
+..
+(N\thetkz@cnt@impair\thetkz@cnt@lg);
+%
+\draw[line width =\cmdTAB@tbs@lw ]
+([xshift=01cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext) 
+..
+controls+(90:0.5)and+(305:1)..
+(N\thetkz@cnt@impair\thetkz@cnt@lg);  
+\node[font=\scriptsize, text width=4em, minimum height = 5em, align = center
+] at   ([yshift=-02pt]Z\thetkz@cnt@impair\thetkz@cnt@lg){ \vbox to 4em{\vfill\RL{
+  $\Nplot$
+\\
+    يقطع $\Nline$ 
+ \\
+   في النقطة\\
+\scalebox{0.65}{\ifTAB@VA@help\else\tl\fi}    
+   %
+               }}}; 
               }{%
      \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{}}{}{
 %
@@ -107,14 +117,19 @@
 }{%
        \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{+}}
 {
- \node[inner sep=0pt,text width=0.5cm ,align=center,font=\scriptsize] at (S\thetkz@cnt@pair\thetkz@cnt@lg) {$\Nplot$ 
+ \node[inner sep=0pt,, text width=5em, minimum height = 5em, align = center,font=\scriptsize] at ([yshift=8pt]S\thetkz@cnt@pair\thetkz@cnt@lg) {
+ \vbox to 3em{\vfill 
+ $\Nplot$ \\
  {فوق}        
-         $\Nline$};
+         \\
+         $\Nline$}};
 }
         {   \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{-}}
-{       \node[inner sep=0pt,text width=0.5cm,align=center,font=\scriptsize] at (S\thetkz@cnt@pair\thetkz@cnt@lg) {$\Nplot$ 
+{\node[inner sep=0pt,, text width=5em, minimum height = 5em, align = center,font=\scriptsize] at ([yshift=8pt]S\thetkz@cnt@pair\thetkz@cnt@lg) {
+ \vbox to 3em{\vfill
+$\Nplot$ \\
  {تحت}        
-         $\Nline$};}{        
+        \\ $\Nline$}};}{        
            \node at (S\thetkz@cnt@pair\thetkz@cnt@lg) {$\x$}; 
           }}}%%%%%%%%%%%%%%%%%%%%%
          \stepcounter{tkz@cnt@pair}%
