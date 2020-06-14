@@ -1,16 +1,18 @@
 %tkz-pos.sty    encodage : UTF8  
-% Created By : Naam Mohamed & Salim Bou and distributed under the LPPL license.
+% Created By : Walid LAOUIDJI  and distributed under the LPPL license.
 % من إنشاء الأستاذ
 %: Walid LAOUIDJI
 %gmail: walidlaouidji28@gmail.com
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{na-position}[2020/06/14 version1.1]
+\ProvidesPackage{tkz-pos}[2020/06/14 version1.1]
 %%%%%%%%%%%%%%% 
 \RequirePackage{tkz-tab} 
  \def\Nplot{\left(C_f\right)}
 \def\Nline{\left(\Delta\right)}
 \def\plot{f}
 \def\line{y}
+\tikzset{pos style/.style = {
+                           draw   = \tkzTabDefaultWritingColor}}
 %<------------------------------------------>
   \newcommand*{\tkzTabPos}[2][]{%
  \makeatletter
@@ -25,15 +27,16 @@
 \ifthenelse{\isodd{\value{tkz@cnt@cl}}}{
 \path (N\thetkz@cnt@impair\thetkz@cnt@lg) --coordinate[midway](Z\thetkz@cnt@impair\thetkz@cnt@lg)(N\thetkz@cnt@impair\thetkz@cnt@lgnext); 
 \ifthenelse{\equal{\expandafter\stripspaces\expandafter{\x}}{z}}{
-\draw[line width =\cmdTAB@tbs@lw ]
+\draw[line width =\cmdTAB@tbs@lw, pos style ]
 ([xshift=-01cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext)..controls+(90:0.5)and+(230:1)..(N\thetkz@cnt@impair\thetkz@cnt@lg);
-\draw[line width =\cmdTAB@tbs@lw ]([xshift=01cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext)..controls+(90:0.5)and+(310:1)..
+\draw[line width =\cmdTAB@tbs@lw,pos style ]([xshift=01cm]N\thetkz@cnt@impair\thetkz@cnt@lgnext)..controls+(90:0.5)and+(310:1)..
 (N\thetkz@cnt@impair\thetkz@cnt@lg);  
 \node[anchor=base,font=\scriptsize](pn)at([yshift=-0.2cm]Z\thetkz@cnt@impair\thetkz@cnt@lg){ 
 \tabular{c}
   $\Nplot$
 \\
-    يقطع $\Nline$ 
+    يقطع
+    $\Nline$ 
  \\
    في النقطة
    \\  
@@ -103,8 +106,7 @@ $\Nplot$ \\
          \stepcounter{tkz@cnt@pair}%
         }%
    \stepcounter{tkz@cnt@cl}%
-   }% end foreach  
-%   \fi
+   }
    }
    %
 %<-------------------------------The End ------------------------------------>
