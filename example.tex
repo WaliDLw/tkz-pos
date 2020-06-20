@@ -2,8 +2,8 @@
  \usepackage[margin=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{amssymb,mathpazo}
-\usepackage{tkz-pos}
+\usepackage{amssymb ,mathpazo}
+\usepackage{na-position}
  \usepackage{polyglossia}
 \setmainlanguage[numerals=maghrib]{arabic}
 \setotherlanguage{english}
@@ -21,19 +21,7 @@
 \begin{document}
  
  \section{مثال1}
-\begin{tikzpicture}[node style/.style={fill opacity=0,text opacity=1}] 
-\tkzTabColors[backgroundcolor=yellow]
-\tkzTabInit[  espcl=2 ] 
-{$x$ / 1 ,
-$f(x)-y$/1,
- الوضع النسبي
- /2 
- }%
-{$-\infty$ , $-1$,$1-\sqrt{3}$,$1$, $+\infty$ }%
-\tkzTabLine{,+,d,-,z,+,d,-,}
- \tkzTabPos{ ,+,d,-,z/$\left(1-\sqrt{3};f(1-\sqrt{3})\right)$ ,+,d,-,} 
-%\tkzTabVar{-/,+/}
-\end{tikzpicture}
+ 
 
  
 \begin{tikzpicture}
@@ -59,14 +47,15 @@ $f(x)-y$/1,
 \end{tikzpicture}
  
  \begin{tikzpicture}
-\tkzTabInit[  espcl=2  ] 
+\tkzTabInit[  espcl=2.5] 
 {$x$ / 1 ,
-$f(x)-y$/1,
+ $f(x)-y$/1,
  الوضع النسبي
- /2 }%
+ /2.5 }%
 {$-\infty$ , $-3$ , $3$, $5$ ,$+\infty$ } 
 \tkzTabLine{t,+,d,h,d,+,z,-, }
 \tkzTabPos{t,+,d,h,d,-, z/$A\left(5;f(5)\right)$,-,} 
+ 
 \end{tikzpicture}
  \end{document}
  
